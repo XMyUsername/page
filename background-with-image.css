@@ -1,0 +1,22 @@
+body {
+    /* Imagen de fondo con fallback a gradiente */
+    background: 
+        /* Tu imagen */
+        url('img/shin-chan-bg.jpg') center/cover no-repeat fixed,
+        /* Fallback si la imagen no carga */
+        linear-gradient(45deg, #ffeaa7, #fab1a0, #fd79a8, #fdcb6e);
+    
+    /* Si quieres overlay sobre la imagen */
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+        url('img/shin-chan-bg.jpg');
+}
+
+/* Versión con múltiples imágenes */
+.multi-background {
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255,221,68,0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,107,107,0.2) 0%, transparent 50%),
+        url('img/pattern.png') repeat,
+        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Shin Chan Subs Admin</title>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="../img/logo.png" alt="Logo" width="40">
+                    <span>Shin Chan Subs</span>
+                </div>
+                <button class="btn btn-link sidebar-toggle d-lg-none" id="toggleSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="../img/avatar.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h6 id="adminName">XMyUsername</h6>
+                    <span class="user-role">Administrador</span>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="episodios.html" class="nav-link">
+                        <i class="fas fa-film"></i>
+                        <span>Episodios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="stats.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Estadísticas</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="config.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="#" class="nav-link" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Topbar -->
+            <div class="admin-topbar">
+                <button class="btn btn-link sidebar-toggle d-none d-lg-block" id="toggleSidebarLg">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="topbar-title">Configuración</div>
+                <div class="topbar-actions">
+                    <button class="btn btn-primary btn-sm" id="saveAllSettingsBtn">
+                        <i class="fas fa-save me-1"></i> Guardar todos los cambios
+                    </button>
+                </div>
+            </div>
+
+            <!-- Configuration Content -->
+            <div class="admin-main">
+                <div class="container-fluid p-4">
+                    <!-- Tabs Navigation -->
+                    <ul class="nav nav-tabs mb-4" id="configTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">
+                                <i class="fas fa-sliders-h me-1"></i> General
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="appearance-tab" data-bs-toggle="tab" data-bs-target="#appearance" type="button" role="tab" aria-controls="appearance" aria-selected="false">
+                                <i class="fas fa-palette me-1"></i> Apariencia
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button" role="tab" aria-controls="admin" aria-selected="false">
+                                <i class="fas fa-user-shield me-1"></i> Administración
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced" type="button" role="tab" aria-controls="advanced" aria-selected="false">
+                                <i class="fas fa-code me-1"></i> Avanzado
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tabs Content -->
+                    <div class="tab-content" id="configTabsContent">
+                        <!-- General Settings Tab -->
+                        <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Configuración del sitio</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label for="siteName" class="form-label">Nombre del sitio</label>
+                                            <input type="text" class="form-control" id="siteName" value="Shin Chan Subs">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="siteTagline" class="form-label">Eslogan</label>
+                                            <input type="text" class="form-control" id="siteTagline" value="Las mejores traducciones y subtítulos para los episodios de Shin Chan">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="siteDescription" class="form-label">Descripción del sitio</label>
+                                        <textarea class="form-control" id="siteDescription" rows="3">Subtítulos de alta calidad para Shin Chan. Ofrecemos episodios con traducción cuidada y adaptada al español.</textarea>
+                                        <div class="form-text">Esta descripción se utiliza para SEO y aparece en los resultados de búsqueda.</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label for="contactEmail" class="form-label">Email de contacto</label>
+                                            <input type="email" class="form-control" id="contactEmail" value="contacto@shinchan-subs.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="languageSelect" class="form-label">Idioma predeterminado</label>
+                                            <select class="form-select" id="languageSelect">
+                                                <option value="es" selected>Español</option>
+                                                <option value="en">English</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Redes sociales</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="facebookUrl" class="form-label">Facebook</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fab fa-facebook-f"></i></span>
+                                                <input type="url" class="form-control" id="facebookUrl" placeholder="https://facebook.com/tu-pagina">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="twitterUrl" class="form-label">Twitter</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+                                                <input type="url" class="form-control" id="twitterUrl" placeholder="https://twitter.com/tu-usuario">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="instagramUrl" class="form-label">Instagram</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                                                <input type="url" class="form-control" id="instagramUrl" placeholder="https://instagram.com/tu-usuario">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="discordUrl" class="form-label">Discord</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fab fa-discord"></i></span>
+                                                <input type="url" class="form-control" id="discordUrl" placeholder="https://discord.gg/tu-invitacion">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Configuración de episodios</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label for="episodesPerPage" class="form-label">Episodios por página</label>
+                                            <input type="number" class="form-control" id="episodesPerPage" min="4" max="40" value="12">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="featuredEpisodesCount" class="form-label">Episodios destacados en inicio</label>
+                                            <input type="number" class="form-control" id="featuredEpisodesCount" min="1" max="12" value="6">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableComments" checked>
+                                                <label class="form-check-label" for="enableComments">Permitir comentarios</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableAutoThumbnail" checked>
+                                                <label class="form-check-label" for="enableAutoThumbnail">Detectar miniaturas automáticamente</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableViewCount" checked>
+                                                <label class="form-check-label" for="enableViewCount">Mostrar contador de visualizaciones</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableNotifications" checked>
+                                                <label class="form-check-label" for="enableNotifications">Notificar nuevos episodios</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appearance Tab -->
+                        <div class="tab-pane fade" id="appearance" role="tabpanel" aria-labelledby="appearance-tab">
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Tema y colores</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label">Modo de tema predeterminado</label>
+                                            <div class="d-flex theme-options-container">
+                                                <div class="theme-option" data-theme="light">
+                                                    <div class="theme-preview light-theme">
+                                                        <div class="preview-header"></div>
+                                                        <div class="preview-content"></div>
+                                                    </div>
+                                                    <div class="theme-label">
+                                                        <input class="form-check-input" type="radio" name="defaultTheme" id="themeLight" value="light" checked>
+                                                        <label class="form-check-label" for="themeLight">Claro</label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="theme-option" data-theme="dark">
+                                                    <div class="theme-preview dark-theme">
+                                                        <div class="preview-header"></div>
+                                                        <div class="preview-content"></div>
+                                                    </div>
+                                                    <div class="theme-label">
+                                                        <input class="form-check-input" type="radio" name="defaultTheme" id="themeDark" value="dark">
+                                                        <label class="form-check-label" for="themeDark">Oscuro</label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="theme-option" data-theme="auto">
+                                                    <div class="theme-preview auto-theme">
+                                                        <div class="preview-half light-theme">
+                                                            <div class="preview-header"></div>
+                                                            <div class="preview-content"></div>
+                                                        </div>
+                                                        <div class="preview-half dark-theme">
+                                                            <div class="preview-header"></div>
+                                                            <div class="preview-content"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="theme-label">
+                                                        <input class="form-check-input" type="radio" name="defaultTheme" id="themeAuto" value="auto">
+                                                        <label class="form-check-label" for="themeAuto">Automático</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Permitir al usuario cambiar tema</label>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="enableThemeToggle" checked>
+                                                <label class="form-check-label" for="enableThemeToggle">Mostrar botón selector de tema</label>
+                                            </div>
+                                            
+                                            <label for="primaryColor" class="form-label">Color primario</label>
+                                            <div class="input-group mb-3">
+                                                <input type="color" class="form-control form-control-color" id="primaryColor" value="#f44336">
+                                                <input type="text" class="form-control" id="primaryColorCode" value="#f44336">
+                                            </div>
+                                            
+                                            <label for="accentColor" class="form-label">Color de acento</label>
+                                            <div class="input-group">
+                                                <input type="color" class="form-control form-control-color" id="accentColor" value="#ffc107">
+                                                <input type="text" class="form-control" id="accentColorCode" value="#ffc107">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Logos e imágenes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6 mb-4 mb-md-0">
+                                            <label class="form-label">Logo del sitio</label>
+                                            <div class="logo-preview mb-2">
+                                                <img src="../img/logo.png" id="logoPreview" alt="Logo" class="img-fluid">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="url" class="form-control" id="logoUrl" placeholder="URL del logo" value="../img/logo.png">
+                                                <button class="btn btn-outline-secondary" type="button" id="updateLogoBtn">Actualizar</button>
+                                            </div>
+                                            <div class="form-text">
+                                                Recomendado: Imagen cuadrada de 200x200px en formato PNG con transparencia
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <label class="form-label">Imagen de fondo de cabecera</label>
+                                            <div class="header-bg-preview mb-2">
+                                                <img src="../img/background.jpg" id="headerBgPreview" alt="Fondo" class="img-fluid">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="url" class="form-control" id="headerBgUrl" placeholder="URL de imagen de fondo" value="../img/background.jpg">
+                                                <button class="btn btn-outline-secondary" type="button" id="updateHeaderBgBtn">Actualizar</button>
+                                            </div>
+                                            <div class="form-text">
+                                                Recomendado: Imagen de 1920x1080px o similar, en formato JPG o WebP
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Favicon</label>
+                                            <div class="favicon-preview mb-2">
+                                                <img src="../img/favicon.ico" id="faviconPreview" alt="Favicon" class="img-fluid">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="url" class="form-control" id="faviconUrl" placeholder="URL del favicon" value="../img/favicon.ico">
+                                                <button class="btn btn-outline-secondary" type="button" id="updateFaviconBtn">Actualizar</button>
+                                            </div>
+                                            <div class="form-text">
+                                                Recomendado: Formato ICO, PNG o SVG, tamaño 32x32px
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Diseño</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cardStyle" class="form-label">Estilo de tarjetas</label>
+                                            <select class="form-select" id="cardStyle">
+                                                <option value="standard" selected>Estándar</option>
+                                                <option value="bordered">Con borde</option>
+                                                <option value="rounded">Muy redondeado</option>
+                                                <option value="minimal">Minimalista</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="layoutDensity" class="form-label">Densidad de elementos</label>
+                                            <select class="form-select" id="layoutDensity">
+                                                <option value="comfort" selected>Confortable</option>
+                                                <option value="compact">Compacta</option>
+                                                <option value="spacious">Espaciosa</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="fontFamily" class="form-label">Familia de fuente</label>
+                                            <select class="form-select" id="fontFamily">
+                                                <option value="default" selected>Por defecto (Segoe UI, sans-serif)</option>
+                                                <option value="roboto">Roboto</option>
+                                                <option value="montserrat">Montserrat</option>
+                                                <option value="opensans">Open Sans</option>
+                                                <option value="poppins">Poppins</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="buttonStyle" class="form-label">Estilo de botones</label>
+                                            <select class="form-select" id="buttonStyle">
+                                                <option value="standard" selected>Estándar</option>
+                                                <option value="rounded">Redondeados</option>
+                                                <option value="pill">Píldora</option>
+                                                <option value="square">Cuadrados</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableAnimations" checked>
+                                                <label class="form-check-label" for="enableAnimations">Habilitar animaciones</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableCardHover" checked>
+                                                <label class="form-check-label" for="enableCardHover">Efecto hover en tarjetas</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Admin Settings Tab -->
+                        <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Cuenta de administrador</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label for="adminUsername" class="form-label">Nombre de usuario</label>
+                                            <input type="text" class="form-control" id="adminUsername" value="XMyUsername">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="adminEmail" class="form-label">Correo electrónico</label>
+                                            <input type="email" class="form-control" id="adminEmail" value="admin@shinchan-subs.com">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="adminNewPassword" class="form-label">Nueva contraseña</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="adminNewPassword" placeholder="Dejar en blanco para mantener la actual">
+                                                <button class="btn btn-outline-secondary" type="button" id="toggleAdminPassword">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="adminConfirmPassword" class="form-label">Confirmar contraseña</label>
+                                            <input type="password" class="form-control" id="adminConfirmPassword" placeholder="Confirmar nueva contraseña">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                                        <button class="btn btn-primary" type="button" id="updateAccountBtn">
+                                            <i class="fas fa-save me-1"></i> Actualizar cuenta
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Perfil</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3 mb-md-0">
+                                            <div class="avatar-preview mb-2">
+                                                <img src="../img/avatar.png" id="avatarPreview" alt="Avatar del admin" class="img-fluid rounded-circle">
+                                            </div>
+                                            <div class="d-grid">
+                                                <button class="btn btn-outline-primary btn-sm" type="button" id="changeAvatarBtn">
+                                                    Cambiar avatar
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="mb-3">
+                                                <label for="displayName" class="form-label">Nombre visible</label>
+                                                <input type="text" class="form-control" id="displayName" value="XMyUsername">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="adminBio" class="form-label">Biografía</label>
+                                                <textarea class="form-control" id="adminBio" rows="3">Subtitulador entusiasta de Shin Chan desde 2020.</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Seguridad</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="enableAutoLogout" checked>
+                                            <label class="form-check-label" for="enableAutoLogout">Cierre automático de sesión por inactividad</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="sessionDuration" class="form-label">Duración de la sesión</label>
+                                        <select class="form-select" id="sessionDuration">
+                                            <option value="1">1 hora</option>
+                                            <option value="3">3 horas</option>
+                                            <option value="8">8 horas</option>
+                                            <option value="24" selected>24 horas</option>
+                                            <option value="168">7 días</option>
+                                            <option value="720">30 días</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                        <button class="btn btn-danger" type="button" id="logoutAllSessionsBtn">
+                                            <i class="fas fa-power-off me-1"></i> Cerrar todas las sesiones
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Settings Tab -->
+                        <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Base de datos</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Esta web utiliza almacenamiento local del navegador para guardar los datos. Puedes gestionar estos datos aquí:</p>
+                                    
+                                    <div class="alert alert-info">
+                                        <h6><i class="fas fa-info-circle me-1"></i> Información de almacenamiento</h6>
+                                        <ul class="mb-0">
+                                            <li><strong>Episodios almacenados:</strong> <span id="storedEpisodesCount">8</span></li>
+                                            <li><strong>Configuración guardada:</strong> <span id="storedSettingsStatus">Sí</span></li>
+                                            <li><strong>Espacio utilizado:</strong> <span id="storageUsed">~50 KB</span></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="d-flex flex-wrap gap-2 mt-3">
+                                        <button class="btn btn-primary" type="button" id="exportDataBtn">
+                                            <i class="fas fa-download me-1"></i> Exportar datos
+                                        </button>
+                                        <button class="btn btn-secondary" type="button" id="importDataBtn">
+                                            <i class="fas fa-upload me-1"></i> Importar datos
+                                        </button>
+                                        <button class="btn btn-warning" type="button" id="resetDataBtn">
+                                            <i class="fas fa-undo me-1"></i> Restablecer datos a valores predeterminados
+                                        </button>
+                                        <button class="btn btn-danger" type="button" id="clearDataBtn">
+                                            <i class="fas fa-trash-alt me-1"></i> Borrar todos los datos
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title">Personalización avanzada</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="customCss" class="form-label">CSS personalizado</label>
+                                        <textarea class="form-control font-monospace" id="customCss" rows="5"
+                                            placeholder="/* Añade aquí tu CSS personalizado */"></textarea>
+                                        <div class="form-text">
+                                            Añade tu propio CSS para personalizar la apariencia del sitio.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="customJs" class="form-label">JavaScript personalizado</label>
+                                        <textarea class="form-control font-monospace" id="customJs" rows="5"
+                                            placeholder="// Añade aquí tu JavaScript personalizado"></textarea>
+                                        <div class="form-text">
+                                            Añade tu propio JavaScript para añadir funcionalidades al sitio.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="analyticsCode" class="form-label">Código de Google Analytics</label>
+                                        <input type="text" class="form-control" id="analyticsCode" placeholder="UA-XXXXXXXXX-X o G-XXXXXXXXXX">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card admin-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Modo de mantenimiento</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                        <label class="form-check-label" for="maintenanceMode">Activar modo de mantenimiento</label>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="maintenanceMessage" class="form-label">Mensaje de mantenimiento</label>
+                                        <textarea class="form-control" id="maintenanceMessage" rows="3">El sitio se encuentra en mantenimiento. Volveremos pronto.</textarea>
+                                    </div>
+                                    
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle me-1"></i> Al activar el modo de mantenimiento, los visitantes no podrán acceder al sitio. Solo el administrador podrá acceder.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Settings Footer -->
+                    <div class="d-flex justify-content-end mt-4">
+                        <button class="btn btn-secondary me-2" id="resetSettingsBtn">
+                            <i class="fas fa-undo me-1"></i> Restaurar predeterminados
+                        </button>
+                        <button class="btn btn-primary" id="saveAllSettingsFooterBtn">
+                            <i class="fas fa-save me-1"></i> Guardar todos los cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Import Modal -->
+    <div class="modal fade" id="importDataModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Importar datos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="importDataFile" class="form-label">Selecciona el archivo JSON de respaldo</label>
+                        <input class="form-control" type="file" id="importDataFile" accept=".json">
+                    </div>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-1"></i> Al importar datos nuevos, se reemplazarán todos los datos existentes.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmImportBtn">Importar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/config-manager.js"></script>
+</body>
+</html>

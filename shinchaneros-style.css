@@ -1,0 +1,437 @@
+/* =============== Estilo Shinchaneros - Más Guay y Típico =============== */
+
+:root {
+    --shinchan-red: #ff4444;
+    --shinchan-yellow: #ffdd44;
+    --shinchan-blue: #4488ff;
+    --shinchan-green: #44cc44;
+    --shinchan-orange: #ff8844;
+    --shinchan-purple: #8844ff;
+    --shinchan-bg: #fff9e6;
+    --shinchan-dark: #2d3436;
+}
+
+/* =============== Fuentes Divertidas =============== */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Comic Neue', cursive, sans-serif;
+    background: linear-gradient(45deg, #fff9e6, #f0f8ff);
+    background-attachment: fixed;
+}
+
+.brand-text,
+.hero-section h1,
+.section-title {
+    font-family: 'Fredoka One', cursive;
+    color: var(--shinchan-red);
+    text-shadow: 2px 2px 0px var(--shinchan-yellow);
+}
+
+/* =============== Navbar Shinchanero =============== */
+.navbar {
+    background: linear-gradient(90deg, var(--shinchan-red), var(--shinchan-orange)) !important;
+    box-shadow: 0 4px 20px rgba(255, 68, 68, 0.3);
+}
+
+.navbar-brand img {
+    border: 3px solid var(--shinchan-yellow);
+    border-radius: 50%;
+    animation: bounce 2s infinite;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    background: var(--shinchan-yellow) !important;
+    color: var(--shinchan-dark) !important;
+    transform: translateY(-3px) scale(1.05);
+    border-radius: 20px;
+}
+
+/* =============== Hero Section Mejorado =============== */
+.hero-section {
+    background: 
+        radial-gradient(circle at 20% 20%, var(--shinchan-blue) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--shinchan-red) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, var(--shinchan-yellow) 0%, transparent 50%),
+        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.3"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.2"/><circle cx="40" cy="70" r="2.5" fill="white" opacity="0.3"/><circle cx="70" cy="80" r="1" fill="white" opacity="0.2"/></svg>');
+    animation: float 10s ease-in-out infinite;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    background: linear-gradient(45deg, #fff, var(--shinchan-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 221, 68, 0.5)); }
+    to { filter: drop-shadow(0 0 20px rgba(255, 221, 68, 0.8)); }
+}
+
+/* =============== Botones Shinchaneros =============== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--shinchan-red), var(--shinchan-orange));
+    border: 3px solid var(--shinchan-yellow);
+    border-radius: 25px;
+    font-family: 'Fredoka One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, var(--shinchan-orange), var(--shinchan-red));
+    box-shadow: 0 15px 35px rgba(255, 68, 68, 0.6);
+    animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 7% { transform: translateY(-5px) scale(1.05) rotateZ(0); }
+    15% { transform: translateY(-5px) scale(1.05) rotateZ(-5deg); }
+    20% { transform: translateY(-5px) scale(1.05) rotateZ(5deg); }
+    25% { transform: translateY(-5px) scale(1.05) rotateZ(-5deg); }
+    30% { transform: translateY(-5px) scale(1.05) rotateZ(5deg); }
+    35% { transform: translateY(-5px) scale(1.05) rotateZ(-5deg); }
+    40%, 100% { transform: translateY(-5px) scale(1.05) rotateZ(0); }
+}
+
+/* =============== Cards de Episodios Mejoradas =============== */
+.episode-card {
+    border: 3px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, var(--shinchan-red), var(--shinchan-yellow), var(--shinchan-blue)) border-box;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.episode-card:hover {
+    transform: translateY(-10px) scale(1.03) rotate(1deg);
+    box-shadow: 
+        0 20px 40px rgba(255, 68, 68, 0.3),
+        0 0 0 5px rgba(255, 221, 68, 0.2);
+}
+
+.episode-card .card-img-top {
+    border-radius: 17px 17px 0 0;
+    border: 2px solid var(--shinchan-yellow);
+}
+
+.episode-overlay {
+    background: radial-gradient(circle, rgba(255, 68, 68, 0.9), rgba(255, 136, 68, 0.8));
+    backdrop-filter: blur(5px);
+}
+
+.play-btn {
+    background: var(--shinchan-yellow) !important;
+    color: var(--shinchan-dark) !important;
+    border: 2px solid white !important;
+    border-radius: 50px !important;
+    font-weight: 700;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* =============== Badges Shinchaneros =============== */
+.badge {
+    font-family: 'Fredoka One', cursive;
+    border-radius: 15px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.bg-primary {
+    background: linear-gradient(135deg, var(--shinchan-blue), var(--shinchan-purple)) !important;
+    box-shadow: 0 4px 15px rgba(68, 136, 255, 0.4);
+}
+
+.badge.bg-warning {
+    background: linear-gradient(135deg, var(--shinchan-yellow), var(--shinchan-orange)) !important;
+    color: var(--shinchan-dark) !important;
+    box-shadow: 0 4px 15px rgba(255, 221, 68, 0.4);
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+}
+
+/* =============== Sistema de Notificaciones =============== */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    background: linear-gradient(135deg, white, #f8f9ff);
+    border: 3px solid var(--shinchan-yellow);
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 0 0 2px var(--shinchan-red);
+    z-index: 10000;
+    display: none;
+    transform: translateX(400px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.notification-container.show {
+    transform: translateX(0);
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.shinchan-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--shinchan-yellow), var(--shinchan-orange));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--shinchan-red);
+    animation: bounce 2s infinite;
+}
+
+.shinchan-avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-content h6 {
+    margin: 0;
+    font-family: 'Fredoka One', cursive;
+    color: var(--shinchan-red);
+    font-size: 1.1rem;
+}
+
+.notification-content p {
+    margin: 5px 0 0 0;
+    color: var(--shinchan-dark);
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--shinchan-red);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.notification-close:hover {
+    background: var(--shinchan-red);
+    color: white;
+    transform: scale(1.1);
+}
+
+.notification-actions {
+    padding: 0 15px 15px 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.notification-actions .btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* =============== Contadores Shinchaneros =============== */
+.counter-item {
+    background: linear-gradient(135deg, var(--shinchan-red), var(--shinchan-orange));
+    border: 4px solid var(--shinchan-yellow);
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.counter-value {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.counter-title {
+    font-family: 'Fredoka One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* =============== Footer Shinchanero =============== */
+.footer {
+    background: linear-gradient(135deg, var(--shinchan-dark), #636e72);
+    position: relative;
+}
+
+.footer::before {
+    background: linear-gradient(90deg, 
+        var(--shinchan-red), 
+        var(--shinchan-orange), 
+        var(--shinchan-yellow), 
+        var(--shinchan-green), 
+        var(--shinchan-blue), 
+        var(--shinchan-purple)
+    );
+    height: 8px;
+}
+
+.social-icon {
+    background: linear-gradient(135deg, var(--shinchan-red), var(--shinchan-orange));
+    border: 2px solid var(--shinchan-yellow);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.2) rotate(10deg);
+    background: linear-gradient(135deg, var(--shinchan-yellow), var(--shinchan-red));
+}
+
+/* =============== Animaciones Divertidas =============== */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+    40%, 43% { transform: translateY(-15px); }
+    70% { transform: translateY(-5px); }
+    90% { transform: translateY(-2px); }
+}
+
+/* =============== Back to Top Shinchanero =============== */
+.back-to-top {
+    background: linear-gradient(135deg, var(--shinchan-red), var(--shinchan-orange));
+    border: 3px solid var(--shinchan-yellow);
+    width: 60px;
+    height: 60px;
+    animation: bounce 2s infinite;
+}
+
+.back-to-top:hover {
+    animation: wiggle 0.5s ease-in-out;
+    transform: scale(1.2);
+}
+
+/* =============== Efectos de Partículas =============== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: var(--shinchan-yellow);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particle-float 15s infinite linear;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =============== Responsive Shinchanero =============== */
+@media (max-width: 768px) {
+    .notification-container {
+        width: 300px;
+        right: 10px;
+        top: 10px;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .counter-value {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .notification-container {
+        width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}

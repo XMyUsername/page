@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Gestión de Episodios - Joshua Plata Subs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .admin-container { 
+            max-width: 1400px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+        .admin-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .admin-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .episode-thumbnail {
+            width: 80px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .episode-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .episode-meta {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+        .table-responsive {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .table thead th {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            padding: 1rem;
+        }
+        .table tbody td {
+            padding: 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        .badge-custom {
+            padding: 0.5rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+        .search-controls {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="mb-1">
+                        <i class="fas fa-film text-primary me-2"></i>
+                        Gestión de Episodios
+                    </h1>
+                    <p class="text-muted mb-0">Administra todos los episodios de Joshua Plata Subs</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="index.html" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-arrow-left me-1"></i> Volver al Dashboard
+                    </a>
+                    <button class="btn btn-primary" id="addNewEpisodeBtn">
+                        <i class="fas fa-plus me-1"></i> Añadir Episodio
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="search-controls">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label">Buscar episodios</label>
+                    <input type="text" class="form-control" id="searchEpisodes" placeholder="Buscar por título...">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Temporada</label>
+                    <select class="form-select" id="seasonFilter">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Todos</option>
+                        <option value="published">Publicados</option>
+                        <option value="draft">Borradores</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Destacados</label>
+                    <select class="form-select" id="featuredFilter">
+                        <option value="">Todos</option>
+                        <option value="featured">Destacados</option>
+                        <option value="normal">Normales</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Acciones</label>
+                    <div class="d-grid">
+                        <button class="btn btn-outline-primary" onclick="applyFilters()">
+                            <i class="fas fa-filter me-1"></i> Filtrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episodes Table -->
+        <div class="admin-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">
+                    <i class="fas fa-list me-2"></i>
+                    Lista de Episodios
+                    <span class="badge bg-primary ms-2" id="episodeCount">0</span>
+                </h4>
+                <div class="btn-group">
+                    <button class="btn btn-sm btn-outline-success" onclick="markSelectedAsPublished()">
+                        <i class="fas fa-check me-1"></i> Publicar Seleccionados
+                    </button>
+                    <button class="btn btn-sm btn-outline-warning" onclick="markSelectedAsFeatured()">
+                        <i class="fas fa-star me-1"></i> Destacar Seleccionados
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteSelected()">
+                        <i class="fas fa-trash me-1"></i> Eliminar Seleccionados
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th width="50">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="selectAll">
+                                </div>
+                            </th>
+                            <th>ID</th>
+                            <th>Miniatura</th>
+                            <th>Episodio</th>
+                            <th>T/E</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Vistas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="episodesTableBody">
+                        <!-- Se cargará dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/admin-simple.js"></script>
+    <script>
+        // Sistema de gestión de episodios
+        let allEpisodes = [];
+        let filteredEpisodes = [];
+
+        // Cargar episodios al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎬 Iniciando gestión de episodios...');
+            
+            // Verificar autenticación
+            const session = localStorage.getItem('joshuaPlataSession');
+            if (!session) {
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            loadEpisodes();
+            setupEventListeners();
+            renderEpisodesTable();
+            populateFilters();
+        });
+
+        function loadEpisodes() {
+            const stored = localStorage.getItem('joshuaPlataEpisodes');
+            allEpisodes = stored ? JSON.parse(stored) : [];
+            filteredEpisodes = [...allEpisodes];
+            console.log(`📺 Cargados ${allEpisodes.length} episodios`);
+        }
+
+        function setupEventListeners() {
+            // Botón añadir episodio
+            document.getElementById('addNewEpisodeBtn').onclick = () => {
+                if (typeof showAddEpisodeModal === 'function') {
+                    showAddEpisodeModal();
+                } else {
+                    window.location.href = 'index.html';
+                }
+            };
+
+            // Búsqueda
+            document.getElementById('searchEpisodes').addEventListener('input', applyFilters);
+            
+            // Filtros
+            document.getElementById('seasonFilter').addEventListener('change', applyFilters);
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
+            document.getElementById('featuredFilter').addEventListener('change', applyFilters);
+            
+            // Select all
+            document.getElementById('selectAll').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.episode-checkbox');
+                checkboxes.forEach(cb => cb.checked = this.checked);
+            });
+        }
+
+        function renderEpisodesTable() {
+            const tbody = document.getElementById('episodesTableBody');
+            const episodeCount = document.getElementById('episodeCount');
+            
+            tbody.innerHTML = '';
+            episodeCount.textContent = filteredEpisodes.length;
+
+            if (filteredEpisodes.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="text-center py-5">
+                            <i class="fas fa-film fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No hay episodios para mostrar</h5>
+                            <button class="btn btn-primary" onclick="document.getElementById('addNewEpisodeBtn').click()">
+                                <i class="fas fa-plus me-1"></i> Añadir primer episodio
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filteredEpisodes.forEach(episode => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input episode-checkbox" type="checkbox" data-episode-id="${episode.id}">
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary">${episode.id.substring(3, 8)}</span>
+                    </td>
+                    <td>
+                        <img src="${episode.thumbnail}" alt="${episode.title}" class="episode-thumbnail" 
+                             onerror="this.src='../img/thumbnail-placeholder.jpg'">
+                    </td>
+                    <td>
+                        <div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-meta">${episode.description.substring(0, 60)}...</div>
+                            <div class="mt-1">
+                                ${episode.published ? '<span class="badge badge-custom bg-success">Publicado</span>' : '<span class="badge badge-custom bg-secondary">Borrador</span>'}
+                                ${episode.featured ? '<span class="badge badge-custom bg-warning text-dark ms-1">Destacado</span>' : ''}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge bg-primary">T${episode.season}E${episode.number}</span>
+                    </td>
+                    <td>
+                        <span class="badge ${episode.published ? 'bg-success' : 'bg-secondary'}">
+                            ${episode.published ? 'Publicado' : 'Borrador'}
+                        </span>
+                    </td>
+                    <td>
+                        <small class="text-muted">${formatDate(episode.subtitleDate)}</small>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-eye me-1 text-muted"></i>
+                            <span>${(episode.views || 0).toLocaleString()}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary" onclick="editEpisode('${episode.id}')" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-outline-info" onclick="previewEpisode('${episode.id}')" title="Vista previa">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-outline-warning" onclick="toggleFeatured('${episode.id}')" title="Destacar">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="deleteEpisode('${episode.id}')" title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function populateFilters() {
+            const seasonFilter = document.getElementById('seasonFilter');
+            const seasons = [...new Set(allEpisodes.map(ep => ep.season))].sort((a, b) => a - b);
+            
+            seasonFilter.innerHTML = '<option value="">Todas</option>';
+            seasons.forEach(season => {
+                seasonFilter.innerHTML += `<option value="${season}">Temporada ${season}</option>`;
+            });
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchEpisodes').value.toLowerCase();
+            const seasonFilter = document.getElementById('seasonFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const featuredFilter = document.getElementById('featuredFilter').value;
+
+            filteredEpisodes = allEpisodes.filter(episode => {
+                // Búsqueda por texto
+                const matchesSearch = !searchTerm || 
+                    episode.title.toLowerCase().includes(searchTerm) ||
+                    episode.description.toLowerCase().includes(searchTerm);
+
+                // Filtro por temporada
+                const matchesSeason = !seasonFilter || episode.season.toString() === seasonFilter;
+
+                // Filtro por estado
+                const matchesStatus = !statusFilter || 
+                    (statusFilter === 'published' && episode.published) ||
+                    (statusFilter === 'draft' && !episode.published);
+
+                // Filtro por destacados
+                const matchesFeatured = !featuredFilter ||
+                    (featuredFilter === 'featured' && episode.featured) ||
+                    (featuredFilter === 'normal' && !episode.featured);
+
+                return matchesSearch && matchesSeason && matchesStatus && matchesFeatured;
+            });
+
+            renderEpisodesTable();
+        }
+
+        function editEpisode(episodeId) {
+            if (typeof showAddEpisodeModal === 'function') {
+                showAddEpisodeModal(episodeId);
+            } else {
+                alert(`Editar episodio: ${episodeId}`);
+            }
+        }
+
+        function previewEpisode(episodeId) {
+            const episode = allEpisodes.find(ep => ep.id === episodeId);
+            if (!episode) return;
+
+            let embedUrl = episode.embedUrl || episode.videoUrl;
+            
+            // Procesar Dailymotion
+            if (episode.videoUrl.includes('dai.ly')) {
+                const dailyId = episode.videoUrl.split('/').pop();
+                embedUrl = `https://www.dailymotion.com/embed/video/${dailyId}`;
+            }
+
+            Swal.fire({
+                title: episode.title,
+                html: `
+                    <div class="text-start">
+                        <div class="ratio ratio-16x9 mb-3">
+                            <iframe src="${embedUrl}" allowfullscreen frameborder="0"></iframe>
+                        </div>
+                        <p><strong>Temporada ${episode.season}, Episodio ${episode.number}</strong></p>
+                        <p class="text-muted">${episode.description}</p>
+                        <small class="text-muted">Subtitulado: ${formatDate(episode.subtitleDate)}</small>
+                    </div>
+                `,
+                width: 800,
+                showConfirmButton: false,
+                showCloseButton: true
+            });
+        }
+
+        function toggleFeatured(episodeId) {
+            const episode = allEpisodes.find(ep => ep.id === episodeId);
+            if (!episode) return;
+
+            episode.featured = !episode.featured;
+            episode.updatedAt = new Date().toISOString();
+            
+            localStorage.setItem('joshuaPlataEpisodes', JSON.stringify(allEpisodes));
+            loadEpisodes();
+            renderEpisodesTable();
+            
+            const status = episode.featured ? 'destacado' : 'normal';
+            Swal.fire({
+                title: '¡Actualizado!',
+                text: `Episodio marcado como ${status}`,
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+
+        function deleteEpisode(episodeId) {
+            const episode = allEpisodes.find(ep => ep.id === episodeId);
+            if (!episode) return;
+
+            Swal.fire({
+                title: '¿Eliminar episodio?',
+                text: `Se eliminará "${episode.title}"`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    allEpisodes = allEpisodes.filter(ep => ep.id !== episodeId);
+                    localStorage.setItem('joshuaPlataEpisodes', JSON.stringify(allEpisodes));
+                    
+                    loadEpisodes();
+                    renderEpisodesTable();
+                    
+                    Swal.fire('¡Eliminado!', 'El episodio ha sido eliminado.', 'success');
+                }
+            });
+        }
+
+        function markSelectedAsPublished() {
+            const selected = getSelectedEpisodes();
+            if (selected.length === 0) {
+                Swal.fire('Error', 'No hay episodios seleccionados', 'warning');
+                return;
+            }
+
+            selected.forEach(id => {
+                const episode = allEpisodes.find(ep => ep.id === id);
+                if (episode) {
+                    episode.published = true;
+                    episode.updatedAt = new Date().toISOString();
+                }
+            });
+
+            localStorage.setItem('joshuaPlataEpisodes', JSON.stringify(allEpisodes));
+            loadEpisodes();
+            renderEpisodesTable();
+            
+            Swal.fire('¡Actualizado!', `${selected.length} episodios publicados`, 'success');
+        }
+
+        function markSelectedAsFeatured() {
+            const selected = getSelectedEpisodes();
+            if (selected.length === 0) {
+                Swal.fire('Error', 'No hay episodios seleccionados', 'warning');
+                return;
+            }
+
+            selected.forEach(id => {
+                const episode = allEpisodes.find(ep => ep.id === id);
+                if (episode) {
+                    episode.featured = true;
+                    episode.updatedAt = new Date().toISOString();
+                }
+            });
+
+            localStorage.setItem('joshuaPlataEpisodes', JSON.stringify(allEpisodes));
+            loadEpisodes();
+            renderEpisodesTable();
+            
+            Swal.fire('¡Actualizado!', `${selected.length} episodios destacados`, 'success');
+        }
+
+        function deleteSelected() {
+            const selected = getSelectedEpisodes();
+            if (selected.length === 0) {
+                Swal.fire('Error', 'No hay episodios seleccionados', 'warning');
+                return;
+            }
+
+            Swal.fire({
+                title: '¿Eliminar episodios seleccionados?',
+                text: `Se eliminarán ${selected.length} episodios`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                confirmButtonColor: '#d33'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    allEpisodes = allEpisodes.filter(ep => !selected.includes(ep.id));
+                    localStorage.setItem('joshuaPlataEpisodes', JSON.stringify(allEpisodes));
+                    
+                    loadEpisodes();
+                    renderEpisodesTable();
+                    
+                    Swal.fire('¡Eliminados!', `${selected.length} episodios eliminados`, 'success');
+                }
+            });
+        }
+
+        function getSelectedEpisodes() {
+            const checkboxes = document.querySelectorAll('.episode-checkbox:checked');
+            return Array.from(checkboxes).map(cb => cb.getAttribute('data-episode-id'));
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>

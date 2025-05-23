@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Joshua Plata Subs - Panel Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .admin-container { 
+            max-width: 1200px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+        .admin-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .admin-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .test-button {
+            margin: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="mb-1">
+                        <i class="fas fa-crown text-warning me-2"></i>
+                        Panel de Joshua Plata
+                    </h1>
+                    <p class="text-muted mb-0">Administración de Joshua Plata Subs</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../index.html" class="btn btn-outline-primary me-2" target="_blank">
+                        <i class="fas fa-external-link-alt me-1"></i> Ver Sitio
+                    </a>
+                    <button class="btn btn-danger" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number" id="dashboardTotalEpisodes">0</div>
+                    <div>Total Episodios</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number" id="dashboardPublishedEpisodes">0</div>
+                    <div>Publicados</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number" id="dashboardFeaturedEpisodes">0</div>
+                    <div>Destacados</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number" id="dashboardTotalViews">0</div>
+                    <div>Visualizaciones</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Actions -->
+        <div class="admin-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mb-3">
+                        <i class="fas fa-rocket me-2"></i>
+                        ¡Bienvenido de nuevo, Joshua!
+                    </h3>
+                    <p class="lead text-muted mb-4">
+                        Desde aquí puedes gestionar todos tus episodios subtitulados de Shin-chan.
+                    </p>
+                    
+                    <!-- BOTÓN PRINCIPAL -->
+                    <button class="btn btn-primary btn-lg test-button" id="quickAddEpisodeBtn">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        ➕ AÑADIR NUEVO EPISODIO
+                    </button>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-user-ninja fa-6x text-muted" style="opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de Pruebas -->
+        <div class="admin-card bg-light">
+            <h4 class="mb-4">
+                <i class="fas fa-flask me-2"></i>
+                🧪 Área de Pruebas - Todos estos botones deben funcionar
+            </h4>
+            
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <button class="btn btn-success test-button w-100" id="addEpisodeFromDashboard">
+                        Test Botón 1
+                        <br><small>(ID específico)</small>
+                    </button>
+                </div>
+                
+                <div class="col-md-3">
+                    <button class="btn btn-warning test-button w-100 add-episode-btn">
+                        Test Botón 2
+                        <br><small>(Por clase)</small>
+                    </button>
+                </div>
+                
+                <div class="col-md-3">
+                    <button class="btn btn-info test-button w-100" onclick="showAddEpisodeModal()">
+                        Test Botón 3
+                        <br><small>(onclick directo)</small>
+                    </button>
+                </div>
+                
+                <div class="col-md-3">
+                    <button class="btn btn-secondary test-button w-100" onclick="testFunction()">
+                        Test General
+                        <br><small>(Verificar carga)</small>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-3 bg-white rounded">
+                <h6>📋 Estado del Sistema:</h6>
+                <div id="systemStatus">Verificando...</div>
+            </div>
+        </div>
+
+        <!-- Enlaces rápidos -->
+        <div class="admin-card">
+            <h4 class="mb-3">
+                <i class="fas fa-link me-2"></i>
+                Enlaces Rápidos
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="episodios.html" class="btn btn-outline-primary w-100 mb-2">
+                        <i class="fas fa-list me-2"></i>
+                        Ver Todos los Episodios
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="../index.html" class="btn btn-outline-success w-100 mb-2" target="_blank">
+                        <i class="fas fa-eye me-2"></i>
+                        Vista Previa del Sitio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/admin-simple-fixed.js"></script>
+    
+    <!-- Script de verificación -->
+    <script>
+        // Función de test
+        function testFunction() {
+            const status = document.getElementById('systemStatus');
+            
+            // Verificar que las funciones existen
+            const tests = [
+                { name: 'showAddEpisodeModal', exists: typeof showAddEpisodeModal === 'function' },
+                { name: 'saveEpisode', exists: typeof saveEpisode === 'function' },
+                { name: 'logout', exists: typeof logout === 'function' },
+                { name: 'Bootstrap Modal', exists: typeof bootstrap !== 'undefined' },
+                { name: 'SweetAlert2', exists: typeof Swal !== 'undefined' }
+            ];
+            
+            let statusHTML = '<ul class="list-unstyled mb-0">';
+            tests.forEach(test => {
+                const icon = test.exists ? '✅' : '❌';
+                statusHTML += `<li>${icon} ${test.name}: ${test.exists ? 'OK' : 'FALTA'}</li>`;
+            });
+            statusHTML += '</ul>';
+            
+            status.innerHTML = statusHTML;
+            
+            // Test directo de la función
+            if (typeof showAddEpisodeModal === 'function') {
+                alert('✅ Función showAddEpisodeModal existe y debería funcionar');
+                console.log('🧪 Test ejecutado correctamente');
+            } else {
+                alert('❌ Función showAddEpisodeModal NO existe');
+            }
+        }
+        
+        // Auto-verificación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (document.getElementById('systemStatus')) {
+                    testFunction();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce a Joshua Plata, el creador de los mejores subtítulos de Shin-chan en español">
+    <title>🎭 Acerca de Joshua Plata - Joshua Plata Subs</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --joshua-red: #ff4444;
+            --joshua-yellow: #ffdd44;
+            --joshua-blue: #4488ff;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, var(--joshua-red), #ff8844) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-scrolled {
+            background: rgba(255, 68, 68, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .brand-text {
+            font-family: 'Fredoka One', cursive;
+            color: white;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 0px #ffdd44;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: var(--joshua-yellow) !important;
+            color: #333 !important;
+            border-radius: 20px;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(102,126,234,0.9), rgba(118,75,162,0.9)), 
+                        url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1920') center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 0 6rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-hero h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+        }
+        
+        .about-hero .lead {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Cards */
+        .about-card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .about-card .card-header {
+            background: linear-gradient(135deg, var(--joshua-red), #ff8844);
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            padding: 1.5rem;
+            border: none;
+        }
+        
+        .about-card .card-body {
+            padding: 2rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--joshua-red), var(--joshua-yellow), var(--joshua-blue));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+            text-align: left;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--joshua-yellow);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -62px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -62px;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-date {
+            font-family: 'Fredoka One', cursive;
+            color: var(--joshua-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Stats */
+        .stats-section {
+            background: linear-gradient(135deg, var(--joshua-red), #ff8844);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .stat-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        /* Skills */
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--joshua-red), var(--joshua-yellow));
+            border-radius: 5px;
+            transition: width 2s ease;
+            width: 0;
+        }
+        
+        /* Social Links */
+        .social-link {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--joshua-blue), var(--joshua-red));
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--joshua-red), #ff8844);
+            border: 3px solid var(--joshua-yellow);
+            border-radius: 25px;
+            font-family: 'Fredoka One', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255,68,68,0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-item::before {
+                left: -50px !important;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-film fa-2x me-2 text-warning"></i>
+                <span class="brand-text">Joshua Plata Subs</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="episodios.html">
+                            <i class="fas fa-film me-1"></i> Episodios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="acerca.html">
+                            <i class="fas fa-info-circle me-1"></i> Acerca de
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="#" id="adminLink" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-cog me-1"></i> Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="animate-on-scroll">Conoce a Joshua Plata</h1>
+                    <p class="lead animate-on-scroll">El alma detrás de los mejores subtítulos de Shin-chan en español</p>
+                    <div class="animate-on-scroll">
+                        <a href="#historia" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-user me-2"></i> Mi Historia
+                        </a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i> Contacto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia -->
+    <section id="historia" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="animate-on-scroll" style="font-family: 'Fredoka One', cursive; color: var(--joshua-red);">
+                        🎭 Mi Historia con Shin-chan
+                    </h2>
+                    <p class="lead text-muted animate-on-scroll">Un viaje lleno de risas, travesuras y mucho amor por los subtítulos</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-header">
+                            <i class="fas fa-heart me-2"></i> ¿Por qué Shin-chan?
+                        </div>
+                        <div class="card-body">
+                            <p>Desde pequeño, Shin-chan ha sido una parte fundamental de mi vida. Sus travesuras, su humor único y la manera en que ve el mundo siempre me han fascinado.</p>
+                            <p>Cuando me di cuenta de que muchos episodios no tenían subtítulos en español de calidad, decidí tomar cartas en el asunto. Mi misión es llevar la esencia y el humor de Shin-chan a toda la comunidad hispanohablante.</p>
+                            <div class="text-center mt-3">
+                                <i class="fas fa-quote-left fa-2x text-muted"></i>
+                                <p class="fst-italic mt-2">"Los subtítulos no son solo texto, son el puente entre culturas"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-header">
+                            <i class="fas fa-tools me-2"></i> Mi Proceso de Trabajo
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-play-circle text-primary me-2"></i>
+                                    <strong>Selección:</strong> Escojo episodios especiales y populares
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-language text-success me-2"></i>
+                                    <strong>Traducción:</strong> Adapto el humor japonés al español
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-clock text-warning me-2"></i>
+                                    <strong>Sincronización:</strong> Ajusto tiempos perfectamente
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check-double text-info me-2"></i>
+                                    <strong>Revisión:</strong> Múltiples revisiones de calidad
+                                </li>
+                                <li>
+                                    <i class="fas fa-upload text-danger me-2"></i>
+                                    <strong>Publicación:</strong> Comparto con la comunidad
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="animate-on-scroll" style="font-family: 'Fredoka One', cursive; color: var(--joshua-red);">
+                        📅 Mi Trayectoria
+                    </h2>
+                    <p class="lead text-muted animate-on-scroll">Los momentos más importantes en mi carrera como subtitulador</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020</div>
+                        <h5>Los Inicios</h5>
+                        <p>Comencé subtitulando episodios para mi propio entretenimiento, sin imaginar que se convertiría en mi pasión.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <h5>Primeros Seguidores</h5>
+                        <p>La comunidad comenzó a notar mi trabajo. Los comentarios positivos me motivaron a seguir mejorando.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h5>Reconocimiento</h5>
+                        <p>Mis subtítulos comenzaron a ser reconocidos por su calidad y fidelidad al humor original de Shin-chan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h5>Expansión</h5>
+                        <p>Decidí crear una plataforma propia para organizar mejor mi trabajo y ofrecer una mejor experiencia.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h5>Joshua Plata Subs</h5>
+                        <p>Nació oficialmente Joshua Plata Subs, mi proyecto más ambicioso para llevar Shin-chan a todos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h5>El Presente</h5>
+                        <p>Continúo trabajando con la misma pasión, siempre buscando nuevas formas de mejorar y hacer reír a la gente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h2 style="font-family: 'Fredoka One', cursive;">
+                        📊 Algunos Números
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number" data-count="150">0</div>
+                        <div class="stat-title">Episodios Subtitulados</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number" data-count="50000">0</div>
+                        <div class="stat-title">Horas de Trabajo</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number" data-count="1000000">0</div>
+                        <div class="stat-title">Visualizaciones</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number" data-count="25000">0</div>
+                        <div class="stat-title">Fans Felices</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="animate-on-scroll" style="font-family: 'Fredoka One', cursive; color: var(--joshua-red);">
+                        🛠️ Mis Habilidades
+                    </h2>
+                    <p class="lead text-muted animate-on-scroll">Las competencias que he desarrollado a lo largo de los años</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-header">
+                            <i class="fas fa-language me-2"></i> Habilidades Técnicas
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-item">
+                                <div class="skill-name">Traducción Japonés-Español</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Sincronización de Subtítulos</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="98"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Adaptación Cultural</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Edición de Video</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-header">
+                            <i class="fas fa-heart me-2"></i> Cualidades Personales
+                        </div>
+                        <div class="card-body">
+                            <div class="skill-item">
+                                <div class="skill-name">Paciencia y Dedicación</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Atención al Detalle</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="96"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Comprensión del Humor</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="99"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Comunicación con Fans</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="animate-on-scroll" style="font-family: 'Fredoka One', cursive; color: var(--joshua-red);">
+                        📞 ¡Conectemos!
+                    </h2>
+                    <p class="lead text-muted animate-on-scroll">Siempre estoy abierto a escuchar sugerencias y comentarios</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="about-card animate-on-scroll">
+                        <div class="card-body text-center">
+                            <h4 class="mb-4">¿Tienes alguna sugerencia o quieres colaborar?</h4>
+                            <p class="mb-4">Me encanta escuchar a la comunidad. Si tienes ideas para nuevos episodios, comentarios sobre mi trabajo, o simplemente quieres saludar, ¡no dudes en contactarme!</p>
+                            
+                            <div class="social-links mb-4">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-discord"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="fas fa-clock fa-2x text-primary mb-2"></i>
+                                        <h6>Tiempo de Respuesta</h6>
+                                        <p class="mb-0 small text-muted">Generalmente respondo en 24-48 horas</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="fas fa-language fa-2x text-success mb-2"></i>
+                                        <h6>Idiomas</h6>
+                                        <p class="mb-0 small text-muted">Español, Inglés, Japonés básico</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="index.html" class="btn btn-primary btn-lg mt-3">
+                                <i class="fas fa-home me-2"></i> Volver al Inicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4" style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Joshua Plata Subs. Hecho con ❤️ para los fans de Shin-chan</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="index.html" class="text-light me-3">Inicio</a>
+                    <a href="episodios.html" class="text-light me-3">Episodios</a>
+                    <a href="acerca.html" class="text-light">Acerca de</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main-fixed.js"></script>
+    
+    <script>
+        // Animaciones específicas para la página Acerca de
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animaciones al scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        
+                        // Animar contadores
+                        if (entry.target.querySelector('[data-count]')) {
+                            animateCounters(entry.target);
+                        }
+                        
+                        // Animar barras de habilidades
+                        if (entry.target.querySelector('.skill-progress')) {
+                            animateSkills(entry.target);
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+        });
+
+        function animateCounters(container) {
+            const counters = container.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 50);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        setTimeout(updateCounter, 50);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                };
+
+                updateCounter();
+            });
+        }
+
+        function animateSkills(container) {
+            const skills = container.querySelectorAll('.skill-progress');
+            skills.forEach((skill, index) => {
+                setTimeout(() => {
+                    const width = skill.getAttribute('data-width');
+                    skill.style.width = width + '%';
+                }, index * 200);
+            });
+        }
+    </script>
+</body>
+</html>

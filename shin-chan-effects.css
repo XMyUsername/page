@@ -1,0 +1,116 @@
+/* Efectos adicionales específicos de Shin-chan */
+
+/* Cursor personalizado mejorado */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="8" y="24" font-size="24">🎭</text></svg>') 16 16, auto;
+}
+
+.btn, .nav-link, .episode-card, a {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="8" y="24" font-size="24">👆</text></svg>') 16 16, pointer;
+}
+
+/* Efectos de texto animado */
+.text-wiggle {
+    animation: textWiggle 2s ease-in-out infinite;
+}
+
+@keyframes textWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+}
+
+/* Efectos de hover mejorados */
+.hover-bounce:hover {
+    animation: hoverBounce 0.6s ease;
+}
+
+@keyframes hoverBounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(-5px); }
+    75% { transform: translateY(-8px); }
+}
+
+/* Efectos de carga tipo Shin-chan */
+.shin-loading {
+    display: inline-block;
+    animation: shinLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes shinLoading {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+/* Efectos de gradiente animado para texto */
+.gradient-text {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Efectos de partículas en hover */
+.particle-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.particle-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,221,68,0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.particle-hover:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Efectos de sombra animada */
+.shadow-pulse {
+    animation: shadowPulse 2s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+    0%, 100% { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    50% { box-shadow: 0 8px 25px rgba(255,68,68,0.3); }
+}
+
+/* Efectos de brillo */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::after {
+    opacity: 1;
+    animation: glowRotate 2s linear infinite;
+}
+
+@keyframes glowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

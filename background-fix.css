@@ -1,0 +1,53 @@
+/* Background fix con gradientes kawaii */
+body {
+    font-family: 'Comic Neue', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Background sin imagen, solo gradientes hermosos */
+    background: linear-gradient(45deg, 
+        #ffeaa7 0%,   /* Amarillo suave */
+        #fab1a0 25%,  /* Durazno */
+        #fd79a8 50%,  /* Rosa */
+        #fdcb6e 75%,  /* Naranja */
+        #e17055 100%  /* Coral */
+    );
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: shinChanGradient 15s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Alternativa más sutil */
+.background-soft {
+    background: linear-gradient(135deg, 
+        #667eea 0%, 
+        #764ba2 25%, 
+        #f093fb 50%, 
+        #f5576c 75%, 
+        #4facfe 100%
+    );
+    background-size: 300% 300%;
+    animation: backgroundFlow 20s ease infinite;
+}
+
+/* Background con patrón */
+.background-pattern {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 221, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-attachment: fixed;
+}
+
+@keyframes shinChanGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes backgroundFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
